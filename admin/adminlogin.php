@@ -1,4 +1,4 @@
-<?php require('conn/conn.php');?>
+<?php require('../conn/conn.php');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
   <input type="password" name="password" id="password" required><br><br>
   <input type="submit" name="submit" value="Login">
 </form>
-<a href="<?php echo SITEURL;?>admin/adminlogin.php" class="btn-primary">Are you an admin</a>
+<a href="<?php echo SITEURL;?>login.php" class="btn-primary">Back to user login</a>
 		<br><br>
 </body>
 </html>
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 	$password = $_POST['password']; 
 
 	//sql to check whether usernam and pass exist
-	$sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
+	$sql = "SELECT * FROM tbl_admin WHERE username='$username' AND password='$password' LIMIT 1";
 
 	//execute query
 	$res = mysqli_query($conn, $sql);
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['login'] = $username;
 		$_SESSION['user'] = $username;
 		//redirect to index page 
-		header('location:'.SITEURL.'home.php');
+		header('location:'.SITEURL.'admin/manageadmin.php');
 	}else{
 		//user not available
 		$_SESSION['login'] = "username and pass dont match";
