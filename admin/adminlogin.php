@@ -1,9 +1,11 @@
-<?php require('../conn/conn.php');?>
+<?php 
+require('../conn/conn.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Login Page</title>
-<link rel="stylesheet" href="css/registration.css">
+<link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 <h2>Login</h2>
@@ -44,7 +46,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['login'] = $username;
 		$_SESSION['user'] = $username;
 		//redirect to index page 
-		header('location:'.SITEURL.'admin/manageadmin.php');
+		header('location:'.SITEURL.'admin/index.php');
 	}else{
 		//user not available
 		$_SESSION['login'] = "username and pass dont match";

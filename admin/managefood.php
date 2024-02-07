@@ -1,4 +1,7 @@
-<?php require('../conn/conn.php');?>
+<?php 
+//require('../conn/conn.php');
+include 'components/menu.php';
+?>
 
 
 <div class="main-content">

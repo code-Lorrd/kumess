@@ -1,4 +1,7 @@
-<?php include('../conn/conn.php')?>
+<?php 
+//include('../conn/conn.php');
+include 'components/menu.php';
+?>
 	<div class="main-content">
 		<div class="wrapper">
 		<h1>Manage admin</h1>

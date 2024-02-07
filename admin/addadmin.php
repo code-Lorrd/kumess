@@ -1,4 +1,6 @@
-<?php include ('../conn/conn.php'); ?>
+<?php 
+//include ('../conn/conn.php');
+include 'components/menu.php'; ?>
 
 
 <div class="main-content">
