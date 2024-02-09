@@ -5,7 +5,7 @@ require('../conn/conn.php');
 <html>
 <head>
 <title>Login Page</title>
-<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 <h2>Login</h2>

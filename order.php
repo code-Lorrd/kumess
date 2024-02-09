@@ -1,20 +1,20 @@
 <?php
-include 'conn/conn.php';
+include 'components/menu.php';
 
-if (isset($_GET['login'])) {
+if (isset($_SESSION['user'])) {
     // cod
-    $username = $_GET['login'];
-    $sqlid = "SELECT * FROM users WHERE username='$username'";
+    $username = $_SESSION['user'];
+    $sqlid = "SELECT * FROM users WHERE username='$username' LIMIT 1";
     $resid = mysqli_query($conn, $sqlid);
 
     $countid = mysqli_num_rows($resid);
 
     //check data vailable
-    if ($countid>0) {
+    if ($countid == 1) {
         // we have data
         $rowid = mysqli_fetch_assoc($resid);
         $userid = $rowid['user_id'];
-        echo("$userid");
+        //echo("$userid");
     }else{
         //not available
         //redirect
@@ -61,7 +61,7 @@ if (isset($_GET['food_id'])) {
     <section class="food-search">
         <div class="container">
             
-            <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+            <h2 class="text-center text-black">Fill this form to confirm your order.</h2>
 
             <form action="" method="POST" class="order">
                 <fieldset>
@@ -94,7 +94,7 @@ if (isset($_GET['food_id'])) {
                         <input type="hidden" name="price" value="<?php echo $price;?>">
 
                         <div class="order-label">Quantity</div>
-                        <input type="number" name="qty" class="input-responsive" value="1" required>
+                        <input type="number" name="qty" value="1" required>
                         
                     </div>
 
@@ -103,16 +103,16 @@ if (isset($_GET['food_id'])) {
                 <fieldset>
                     <legend>Delivery Details</legend>
                     <div class="order-label">Full Name</div>
-                    <input type="text" name="full_name" placeholder="E.g. Lewis Mutonyi" class="input-responsive" required>
+                    <input type="text" name="full_name" placeholder="E.g. Lewis Mutonyi">
 
                     <div class="order-label">Phone Number</div>
-                    <input type="tel" name="contact" placeholder="E.g. o712435678" class="input-responsive" required>
+                    <input type="tel" name="contact" placeholder="E.g. o712435678" required>
 
                     <div class="order-label">Email</div>
-                    <input type="email" name="email" placeholder="E.g. hi@order.gmail.com" class="input-responsive" required>
+                    <input type="email" name="email" placeholder="E.g. hi@order.gmail.com" >
 
                     <div class="order-label">Address</div>
-                    <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
+                    <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" ></textarea>
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
@@ -129,7 +129,7 @@ if (isset($_GET['food_id'])) {
 
                 $total = $price * $quantity;
 
-                $orderdate = date("Y-m-d h:i:sa");
+                //$orderdate = date("Y-m-d h:i:sa");
 
                 $status = "ordered";
 
@@ -147,7 +147,6 @@ if (isset($_GET['food_id'])) {
                 price = $price,
                 quantity = $quantity,
                 total = $total,
-                orderdate = '$orderdate',
                 status = '$status',
                 customername = '$customername',
                 customercontact = '$customercontact',
@@ -155,7 +154,7 @@ if (isset($_GET['food_id'])) {
                 customeraddress = '$customeraddress'
                 ";
 
-              //  echo $sql2; die();
+                //echo $sql2;// die();
                
                 //execute query
                 $result = mysqli_query($conn, $sql2);
@@ -164,15 +163,12 @@ if (isset($_GET['food_id'])) {
                 if ($result==true) {
                     // success
                     $_SESSION['ordered'] = "<div class='success'>order has been taken</div>";
-                    header('location:'.SITEURL);
+                    //header('location:'.SITEURL);
                 }else{
                     //failed to save
                     $_SESSION['order_fail'] = "<div class='error'>order has not been taken</div>";
-                    header('location:'.SITEURL);
+                    //header('location:'.SITEURL);
                 }
-
-
-
 
             }
 

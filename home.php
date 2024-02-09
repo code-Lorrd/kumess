@@ -1,13 +1,7 @@
-<?php include 'conn/conn.php';?>
-
-<?php 
-if (isset($_SESSION['login'])) {
-        // cod
-        echo $_SESSION['login'];
-        
-    }
-
+<?php
+include 'components/menu.php';
 ?>
+
 
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search text-center">
@@ -28,9 +22,9 @@ if (isset($_SESSION['login'])) {
         echo $_SESSION['ordered'];
         unset($_SESSION['ordered']);
     }
-    if (isset($_SESSION['login'])) {
+    if (isset($_SESSION['user'])) {
         // cod
-        echo $_SESSION['login'];
+        //echo $_SESSION['login'];
         
     }
     
@@ -90,7 +84,7 @@ if (isset($_SESSION['login'])) {
                       </p>
                     <br>
 
-                    <a href="<?php echo SITEURL?>order.php?food_id=<?php echo $id;?>&login=<?php echo $_SESSION['login'];?>" class="btn btn-primary">Order Now</a>
+                    <a href="<?php echo SITEURL?>order.php?food_id=<?php echo $id;?>" class="btn btn-primary">Order Now</a>
 
                     </div>
                     </div>

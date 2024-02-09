@@ -10,7 +10,7 @@ include 'login_check.php';
 <head>
 	<meta charset="utf-8">
 	<title>Home page</title>
-	<link rel="stylesheet" type="css" href="../css/admin.css">
+	<link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 	<div class="menu text-center">
@@ -20,7 +20,7 @@ include 'login_check.php';
 			<li><a href="manageadmin.php">Admin</a></li>
 			<li><a href="managefood.php">Food</a></li>
 			<li><a href="manageorder.php">Order</a></li>
-			<!--<li><?php// echo $_SESSION['login'];?></li>-->
+			<li><?php echo $_SESSION['user'];?></li>
 			<li><a href="logout.php">Log out</a></li>
 		</ul>
 	    </div>

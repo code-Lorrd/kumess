@@ -5,7 +5,7 @@
 		<br><br>
 		<?php
 		   if (isset($_SESSION['login'])) {
-			    echo $_SESSION['login'];
+			    //echo $_SESSION['login'];
 			    unset($_SESSION['login']);
 			
 		   }
@@ -31,13 +31,38 @@
 
 		<div class="col-4 text-center">
 			<?php 
-			$sql3 = "SELECT * FROM tbl_orders";
 
-			//execute
-			$res3 = mysqli_query($conn, $sql3);
+			// Prepare the SQL query using prepared statements for security
+			$sql3 = "SELECT COUNT(*) AS order_count FROM tbl_orders WHERE DATE(orderdate) = ?";
+			$stmt = $conn->prepare($sql3);
 
-			//count rows
-			$count3 = mysqli_num_rows($res3);
+			// Bind the current date parameter to the prepared statement
+			$current_date = date("Y-m-d"); // Ensure format matches database column
+			$stmt->bind_param("s", $current_date);
+
+			// Execute the prepared statement
+			$stmt->execute();
+
+			// Bind the result to a variable
+			$stmt->bind_result($count3);
+
+			// Fetch the result
+			$stmt->fetch();
+
+			// Close the prepared statement
+			$stmt->close();
+
+
+			// $dateTime = new DateTime();
+
+			// $currentDate = $dateTime->format('Y-m-d H:i:s');
+			// $sql3 = "SELECT * FROM tbl_orders WHERE orderdate = '$currentDate';";
+			// echo $sql3;
+			// //execute
+			// $res3 = mysqli_query($conn, $sql3);
+
+			// //count rows
+			// $count3 = mysqli_num_rows($res3);
 
 			?>
 			<h1><?php echo $count3;?></h1><br>
@@ -49,7 +74,7 @@
 
 			//create sql
 			//aggregate function
-			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='delivered'";
+			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ready'";
 
 			//EXECUTE
 			$res4 = mysqli_query($conn, $sql4);

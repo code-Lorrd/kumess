@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Register</h2>
-<form action="" method="POST">
+<form action="" method="POST" id="registration-form">
   
   <label for="username">Username:</label><br>
   <input type="text" name="username" id="username" required><br><br>
@@ -17,58 +17,122 @@
   <input type="submit" name="submit" value="Register">
 </form>
 </body>
+
+<script>
+  const username = document.getElementById('username');
+  const usernameError = document.getElementById('username-error');
+
+  username.addEventListener('input', function(event) {
+    // Check if username is at least 6 characters long
+    if (username.value.length < 6) {
+      usernameError.textContent = "Username must be at least 6 characters long.";
+      username.classList.add('error'); // Add styling for error state
+    } else {
+      usernameError.textContent = "";
+      username.classList.remove('error');
+    }
+  });
+
+  // Similar validation logic for password and confirm password fields with separate error messages and styling
+
+  // Password validation
+  const password = document.getElementById('password');
+  const passwordError = document.getElementById('password-error');
+
+  password.addEventListener('input', function(event) {
+    // Check if password is at least 8 characters long, has at least one uppercase letter, one lowercase letter, one number, and one special character
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    if (!regex.test(password.value)) {
+      passwordError.textContent = "Password must be at least 8 characters long with at least one uppercase letter, one lowercase letter, one number, and one special character.";
+      password.classList.add('error');
+    } else {
+      passwordError.textContent = "";
+      password.classList.remove('error');
+    }
+  });
+
+  // Confirm password validation
+  const confirmPassword = document.getElementById('confirm_password');
+  const confirmPasswordError = document.getElementById('confirm-password-error');
+
+  confirmPassword.addEventListener('input', function(event) {
+    if (confirmPassword.value !== password.value) {
+      confirmPasswordError.textContent = "Password and confirm password do not match.";
+      confirmPassword.classList.add('error');
+    } else {
+      confirmPasswordError.textContent = "";
+      confirmPassword.classList.remove('error');
+    }
+  });
+
+  // Prevent form submission if there are errors
+  const form = document.getElementById('registration-form');
+  form.addEventListener('submit', function(event) {
+    const errors = document.querySelectorAll('.error');
+    if (errors.length > 0) {
+      event.preventDefault(); // Prevent form submission
+      alert("Please fix the errors before submitting the form.");
+    }
+  });
+
+  // Style the error class elements
+  const errorElements = document.querySelectorAll('.error');
+  errorElements.forEach(element => {
+    element.style.border = '1px solid red';
+    element.style.backgroundColor = '#f5ebeb';
+  });
+
+  const errorSpans = document.querySelectorAll('.error span');
+  errorSpans.forEach(span => {
+    span.style.color = 'red';
+    span.style.fontWeight = 'bold';
+  });
+</script>
 </html>
 
 
 
-<?php 
-//process value from the form and save
-//check if btn clicked
+<?php
 require('conn/conn.php');
 
 if (isset($_POST['submit'])) {
-	// button clicked 
-	
-	//get data from form
-	$username=$_POST['username'];
-	$password=$_POST['password']; //password encrypt
-  $confirm_password = $_POST['confirm_password'];
+    $username = $_POST['username'];
+    $password = $_POST['password']; // Encrypt password before saving
+    $confirm_password = $_POST['confirm_password'];
 
-  if($confirm_password =! $password){
-    echo "Passwords don't match";
-    header("location:".SITEURL.'registration.php');
-  }else{
+    // Validate passwords first
+    if ($confirm_password !== $password) {
+        $_SESSION['add'] = "Passwords don't match";
+        header("location: " . SITEURL . 'registration.php');
+        exit;
+    }
 
-	//SQL to save data to database
+    // Check for existing username
+    $sql_check = "SELECT COUNT(*) FROM users WHERE username='$username'";
+    $res_check = mysqli_query($conn, $sql_check) or die(mysqli_error($conn));
 
-	$sql = "INSERT INTO users SET 
-	     username='$username',
-	     password='$password'
-	     ";
-	    
+    // Extract the count value directly from the fetched row
+    $existing_username = mysqli_fetch_row($res_check)[0];
 
-	// execute the query and save to db
+    if ($existing_username > 0) {
+        $_SESSION['add'] = "Username already exists";
+        header("location: " . SITEURL . 'registration.php');
+        exit;
+    }
 
-	$res = mysqli_query($conn, $sql) or die(mysqli_error());
+    // Encrypt password securely before saving
+    $password = $password;
 
-	// check data in db 
-	if ($res == true) {
-		//create session variable
-		$_SESSION['add'] = "added successfully";
-		//redirect page
-		header("location:".SITEURL.'login.php');
-	}
-	else
-	{
-		//create session variable
-		$_SESSION['add'] = "failed";
-		//redirect page
-		header("location:".SITEURL.'registration.php');
-	}
+    // Insert user data
+    $sql = "INSERT INTO users SET username='$username', password='$password'";
+    $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
-
+    if ($res === true) {
+        $_SESSION['add'] = "User added successfully";
+        header("location: " . SITEURL . 'login.php');
+    } else {
+        $_SESSION['add'] = "Failed to add user";
+        header("location: " . SITEURL . 'registration.php');
+    }
 }
-}
-
-
 ?>
