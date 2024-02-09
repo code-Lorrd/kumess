@@ -13,6 +13,7 @@
   <label for="password">Password:</label><br>
   <input type="password" name="password" id="password" required><br><br>
   <input type="submit" name="submit" value="Login">
+  <a href="<?php echo SITEURL;?>registration.php" class="btn-primary">Register</a>
 </form>
 <a href="<?php echo SITEURL;?>admin/adminlogin.php" class="btn-primary">Are you an admin</a>
 		<br><br>

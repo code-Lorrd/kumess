@@ -163,7 +163,7 @@ if (isset($_GET['food_id'])) {
                 if ($result==true) {
                     // success
                     $_SESSION['ordered'] = "<div class='success'>order has been taken</div>";
-                    //header('location:'.SITEURL);
+                    header('location:'.SITEURL."orderhistory.php");
                 }else{
                     //failed to save
                     $_SESSION['order_fail'] = "<div class='error'>order has not been taken</div>";
