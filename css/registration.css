@@ -59,9 +59,17 @@ body {
   margin: 0 auto;
   padding: 1%;
 }
+
+.login {
+  background-image: url("../images/kumess.jpg"); /* Assuming your image is in an "images" folder */
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
 .img-responsive{
-  width: 25%;
-  height: 25%;
+  width: 30%;
+  height: 30%;
 }
 .img-curve{
   border-radius: 15px;

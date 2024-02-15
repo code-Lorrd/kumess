@@ -90,7 +90,6 @@ include 'components/menu.php';
 				        <td><?php echo $active;?></td>
 				        <td>
 					        <a href="<?php echo SITEURL;?>admin/updatefood.php?id=<?php echo $id;?>" class="btn-secondary">Update food</a>
-					        <a href="<?php echo SITEURL;?>admin/deletefood.php?id=<?php echo $id;?>" class="btn-danger">Delete food</a>
 				        </td>
 			        </tr>
 

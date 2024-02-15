@@ -66,7 +66,7 @@ include 'components/menu.php';
 		</form>
 
 		<?php
-    require('../conn/conn.php');
+
 		//check if buttonis clicked 
 		if (isset($_POST['submit'])) {
 			// add food to db

@@ -42,9 +42,7 @@ include 'components/menu.php';
 
 		<a href="addadmin.php" class="btn-primary">Add admin</a>
 		<br><br>
-        <a href="managefood.php" class="btn-primary">Manage food</a>
-		<br><br>
-
+      
 		<table class="tbl-full">
 			<tr>
 				<th>S.N</th>

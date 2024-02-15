@@ -19,8 +19,8 @@ include 'components/login_check.php';
     <section class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="#" title="Logo">
-                    <img src="images/loggo.jpg" alt="Restaurant Logo" class="img-responsive">
+                <a href="<?php echo SITEURL;?>" title="Logo"> 
+                    <img src="images/logo.png" alt="KU Logo" class="img-responsive" style="width:50px; height:50px;">
                 </a>
             </div>
 

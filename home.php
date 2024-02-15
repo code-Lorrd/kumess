@@ -7,7 +7,7 @@ include 'components/menu.php';
     <section class="food-search text-center">
         <div class="container">
             
-            <form action="food-search.php" method="POST">
+            <form action="food_search.php" method="POST">
                 <input type="search" name="search" placeholder="Search for Food.." required>
                 <input type="submit" name="submit" value="Search" class="btn btn-primary">
             </form>
@@ -68,7 +68,7 @@ include 'components/menu.php';
                             echo "image not available";
                         }else{
                             ?>
-                             <img src="<?php echo SITEURL?>images/food/<?php echo $image_name?>" alt="<?php echo $title;?>" class="img-responsive img-curve" width="50px" height="50px">
+                             <img src="<?php echo SITEURL?>images/food/<?php echo $image_name?>" alt="<?php echo $title;?>" class="img-responsive img-curve" style="width:100px; height:100px;">
 
                             <?php
                         }
