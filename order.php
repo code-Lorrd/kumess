@@ -14,7 +14,7 @@ if (isset($_SESSION['user'])) {
         // we have data
         $rowid = mysqli_fetch_assoc($resid);
         $userid = $rowid['user_id'];
-        //echo("$userid");
+        //echo("$userID");
     }else{
         //not available
         //redirect
@@ -58,7 +58,7 @@ if (isset($_GET['food_id'])) {
 ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
-    <section class="food-search">
+    <!-- <section class="food-search"> -->
         <div class="container">
             
             <h2 class="text-center text-black">Fill this form to confirm your order.</h2>
@@ -78,7 +78,7 @@ if (isset($_GET['food_id'])) {
                             //available
                             ?>
 
-                            <img src="<?php SITEURL?>images/food/<?php echo $image_name;?>" alt="<?php echo $title;?>" class="img-responsive img-curve">
+                            <img src="<?php SITEURL?>images/food/<?php echo $image_name;?>" alt="<?php echo $title;?>" class="img-responsive img-curve" style="width:100px; height:100px;">
 
                             <?php
                         }
@@ -87,7 +87,7 @@ if (isset($_GET['food_id'])) {
                         
                     </div>
     
-                    <div class="food-menu-desc">
+                    <!-- <div class="food-menu-desc"> -->
                         <h3><?php echo $title;?></h3>
                         <input type="hidden" name="food" value="<?php echo $title;?>">
                         <p class="food-price"><?php echo $price;?></p>
@@ -96,7 +96,7 @@ if (isset($_GET['food_id'])) {
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" value="1" required>
                         
-                    </div>
+                    <!-- </div> -->
 
                 </fieldset>
                 
@@ -112,7 +112,7 @@ if (isset($_GET['food_id'])) {
                     <input type="email" name="email" placeholder="E.g. hi@order.gmail.com" >
 
                     <div class="order-label">Address</div>
-                    <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" ></textarea>
+                    <textarea name="address" rows="6" placeholder="E.g. Street, City, Country" ></textarea>
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
@@ -178,4 +178,4 @@ if (isset($_GET['food_id'])) {
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
 
-   
+

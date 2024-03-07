@@ -1,6 +1,9 @@
 body {
     font-family: sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0%;
+    background-color: aliceblue;
   }
   
   h2 {
@@ -13,20 +16,26 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 20px;
   }
   
   label {
     display: block;
     margin-bottom: 5px;
+    color: #555;
+
   }
   
-  input[type="text"], input[type="password"], input[type="email"]{
+  input[type="text"], input[type="password"], input[type="email"], [type="tel"], [type="number"]{
     width: 100%;
     margin:2px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    margin-bottom: 10px;
+    border: none;
+
   }
   
   input[type="submit"] {
@@ -37,6 +46,10 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+  textarea{
+    width: 100%;
   }
 
   .error {
@@ -174,11 +187,13 @@ fieldset{
 /* CSS for Food SEarch Section */
 
 .food-search{
-  background-image: url(../images/bg.jpg);
+  background-image: url(../images/kumess.jpeg);
   background-size: cover;
+  border: none;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 7% 0;
+  padding: 0 0;
+  height: 100px;
 }
 
 .food-search input[type="search"]{
@@ -272,6 +287,23 @@ fieldset{
   border: 100px;
 }
 
+.table-striped{
+  width: 80%;
+  display:inline;
+  align-items: center;
+  margin: 0 30px;
+  align-content: center;
+}
+table tr th{
+	border-bottom: 1px solid black;
+	padding: 1%;
+	text-align: left;
+  margin: 0 30px;
+}
+table tr td{
+	padding: 1%;
+  margin: 0 30px;
+}
 
 
 /* CSS for Mobile Size or Smaller Screen */
@@ -327,5 +359,8 @@ fieldset{
   }
   .order{
       width: 100%;
+      margin-top: 20px;
+      background-color: 28a745;
   }
+
 }

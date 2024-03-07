@@ -27,7 +27,7 @@
 				<th>Customer contact</th>
 				<th>Customer email</th>
 				<th>Address</th>
-				<th>Action</th>
+				
 			</tr>
 
 		 <?php 
@@ -98,9 +98,7 @@
 				        <td><?php echo $customercontact;?></td>
 				        <td><?php echo $customeremail;?></td>
 				        <td><?php echo $customeraddress;?></td>
-				        <td>
-					        <a href="<?php echo SITEURL;?>admin/updateorder.php?id=<?php echo $id;?>" class="btn-secondary">Update Order</a>
-				        </td>
+				        
 			        </tr>
 
 		 			<?php

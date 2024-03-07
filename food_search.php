@@ -56,7 +56,7 @@
                                 //available
                                 ?>
 
-                                 <img src="<?php echo SITEURL?>images/food/<?php echo $image_name;?>" alt="<?php echo $title;?>" class="img-responsive img-curve">
+                                 <img src="<?php echo SITEURL?>images/food/<?php echo $image_name;?>" alt="<?php echo $title;?>" class="img-responsive img-curve"style="height:100px;width:300px;">
 
 
                                 <?php

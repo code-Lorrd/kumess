@@ -17,8 +17,8 @@ include 'components/menu.php'; ?>
 		?>
 
 		<form action="" method="POST">
-			<table class="tbl-30">
-					<td>Username</td>
+			<table class="tbl-">
+					<td>Username:</td>
 					<td><input type="text" name="username" placeholder="set username" required=""></td>
 				</tr>
 				<tr>

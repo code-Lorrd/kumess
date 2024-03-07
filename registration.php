@@ -121,7 +121,7 @@ if (isset($_POST['submit'])) {
     }
 
     // Encrypt password securely before saving
-    $password = $password;
+    $password = md5($password);
 
     // Insert user data
     $sql = "INSERT INTO users SET username='$username', password='$password'";

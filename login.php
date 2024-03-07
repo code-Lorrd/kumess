@@ -42,6 +42,7 @@ if (isset($_POST['submit'])) {
 
   $username = $_POST['username'];
 	$password = $_POST['password']; 
+	$password=md5($password);
 
 	//sql to check whether usernam and pass exist
 	$sql = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
