@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2024 at 02:43 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Mar 11, 2024 at 04:53 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,15 +37,15 @@ CREATE TABLE `food_items` (
   `active` enum('yes','no') NOT NULL DEFAULT 'yes',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `food_items`
 --
 
 INSERT INTO `food_items` (`id`, `title`, `description`, `price`, `image_path`, `featured`, `active`, `created_at`, `updated_at`) VALUES
-(3, 'ugali', 'maize flour ', 30.00, 'food_name_6111.png', 'yes', 'yes', '2024-02-02 11:32:09', '2024-02-02 11:32:09'),
-(4, 'Rice', 'Rice pilau', 110.00, 'food_name_7717.png', 'yes', 'yes', '2024-02-02 13:36:20', '2024-02-02 13:36:20');
+(3, 'ugali', 'maize flour ', '30.00', 'food_name_6111.png', 'yes', 'yes', '2024-02-02 11:32:09', '2024-02-02 11:32:09'),
+(4, 'Rice', 'Rice pilau', '110.00', 'food_name_7717.png', 'yes', 'yes', '2024-02-02 13:36:20', '2024-02-02 13:36:20');
 
 -- --------------------------------------------------------
 
@@ -58,14 +58,14 @@ CREATE TABLE `menu` (
   `name` varchar(50) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `image_path` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `menu`
 --
 
 INSERT INTO `menu` (`food_id`, `name`, `price`, `image_path`) VALUES
-(1, 'Chicken', 200.00, 'imagesScreenshot (112).png');
+(1, 'Chicken', '200.00', 'imagesScreenshot (112).png');
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,7 @@ CREATE TABLE `tbl_admin` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_admin`
@@ -106,7 +106,7 @@ CREATE TABLE `tbl_orders` (
   `customercontact` varchar(255) NOT NULL,
   `customeremail` varchar(255) NOT NULL,
   `customeraddress` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -117,15 +117,22 @@ CREATE TABLE `tbl_orders` (
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phonenumber` int(11) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
-(13, 'MutonyiLewis', 'qwerty');
+INSERT INTO `users` (`user_id`, `username`, `firstname`, `email`, `phonenumber`, `password`) VALUES
+(13, 'MutonyiLewis', '', '', 0, 'qwerty'),
+(14, 'Sitati', '', '', 0, 'd8578edf8458ce06fbc5bb76a58c5ca4'),
+(15, 'Lewiiii', 'Lewis ', 'mutonyilewis@gmail.com', 778368257, 'd8578edf8458ce06fbc5bb76a58c5ca4'),
+(16, 'Deonte61', 'Enos', 'your.email+fakedata11959@gmail.com', 193, '6dcf51a7679e3265bc5e561b1f63e99a'),
+(17, 'Julia_Jacobs65', 'Amber', 'your.email+fakedata39431@gmail.com', 78787878, '23bd5a2173bf5e2c0abd9235b37abb48');
 
 --
 -- Indexes for dumped tables
@@ -195,7 +202,7 @@ ALTER TABLE `tbl_orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
