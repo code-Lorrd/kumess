@@ -35,6 +35,11 @@ include 'components/login_check.php';
                     <li>
                         <a href="orderhistory.php">Your Orders</a>
                     </li>
+                    <li>
+                        <a href="profile.php">
+                            My Profile
+                        </a>
+                    </li>
                     <li><?php echo $_SESSION['user'];?></li>
                     <li>
                         <a href="logout.php">Log out</a>
