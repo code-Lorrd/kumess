@@ -306,6 +306,78 @@ table tr td{
 }
 
 
+/* CSS for profile page */
+/* Profile container styles */
+.profile-container {
+  display: flex; /* Center the profile content horizontally */
+  flex-direction:column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: #ececec;
+  width: 100%;
+  margin-top: 50px; /* Add some space from the top */
+}
+
+.profile-wrapper {
+  background-color: #f0f0f0; /* Light gray background */
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px; /* Rounded corners */
+  max-width: 500px; /* Set a maximum width */
+}
+
+/* Profile title styles */
+.profile-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* User info section styles */
+.user-info {
+  display: flex;
+  flex-direction: column; /* Stack user details vertically */
+  align-items: center; /* Center user details horizontally */
+  margin-top: 20px;
+}
+
+/* User details styles */
+.user-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; /* Allow details to wrap onto multiple lines if needed */
+  justify-content: space-between; /* Space details evenly */
+  width: 100%;
+}
+
+/* User data styles */
+.user-data {
+  margin-bottom: 10px;
+}
+
+.data-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Edit button styles */
+.edit-button {
+  background-color: #007bff; /* Blue button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Indicate clickable button */
+  margin-top: 20px;
+}
+
+.edit-button:hover {
+  color: white;
+  background-color: #0069d9; /* Darken button on hover */
+}
+
+
 /* CSS for Mobile Size or Smaller Screen */
 
 @media only screen and (max-width:768px){
