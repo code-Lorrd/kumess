@@ -3,21 +3,6 @@
 <head>
 <title>Registration Page</title>
 <link rel="stylesheet" href="css/registration.css">
-</head>
-<body>
-<h2>Register</h2>
-<form action="" method="POST" id="registration-form">
-  
-  <label for="username">Username:</label><br>
-  <input type="text" name="username" id="username" required><br><br>
-  <label for="password">Password:</label><br>
-  <input type="password" name="password" id="password" required><br><br>
-  <label for="confirm_password">Confirm Password:</label><br>
-  <input type="password" name="confirm_password" id="confirm_password" required><br><br>
-  <input type="submit" name="submit" value="Register">
-</form>
-</body>
-
 <script>
   const username = document.getElementById('username');
   const usernameError = document.getElementById('username-error');
@@ -88,6 +73,33 @@
     span.style.fontWeight = 'bold';
   });
 </script>
+</head>
+<body>
+<h2>Register</h2>
+<?php
+if(isset($_SESSION)){
+ echo $_SESSION['add']; 
+unset( $_SESSION['add'] );} ?>
+
+<form action="" method="POST" id="registration-form">
+  
+  <label for="username">Username:</label><br>
+  <input type="text" name="username" id="username" required><br><br>
+  <label for="firstname">Firstname:</label><br>
+  <input type="text" name="firstname" id="firstname" required><br><br>
+  <label for="email">email:</label><br>
+  <input type="email" name="email" id="email" required><br><br>
+  <label for="phonenumber">Phone number:</label><br>
+  <input type="number" name="phonenumber" id="phonenumber" placeholder="Don't start with 0 or +254" required><br><br>
+  <label for="password">Password:</label><br>
+  <input type="password" name="password" id="password" required><br><br>
+  <label for="confirm_password">Confirm Password:</label><br>
+  <input type="password" name="confirm_password" id="confirm_password" required><br><br>
+  <input type="submit" name="submit" value="Register">
+</form>
+</body>
+
+
 </html>
 
 
@@ -97,6 +109,9 @@ require('conn/conn.php');
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
+    $firstname = $_POST['firstname'];
+    $email = strtolower($_POST['email']);
+    $phonenumber = $_POST['phonenumber'];
     $password = $_POST['password']; // Encrypt password before saving
     $confirm_password = $_POST['confirm_password'];
 
@@ -124,12 +139,13 @@ if (isset($_POST['submit'])) {
     $password = md5($password);
 
     // Insert user data
-    $sql = "INSERT INTO users SET username='$username', password='$password'";
-    $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    $sql = "INSERT INTO users SET username='$username', firstname='$firstname', email='$email', phonenumber='$phonenumber', password='$password' ";
+    //echo $sql;
+   $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
     if ($res === true) {
         $_SESSION['add'] = "User added successfully";
-        header("location: " . SITEURL . 'login.php');
+       header("location: " . SITEURL . 'login.php');
     } else {
         $_SESSION['add'] = "Failed to add user";
         header("location: " . SITEURL . 'registration.php');
