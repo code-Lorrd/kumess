@@ -65,7 +65,7 @@ $pdf->Cell(0, 10, 'Date: ' . $date, 0, 1);
 
 // Add summary data
 $pdf->Ln(10);
-$pdf->Cell(0, 10, 'Total Revenue: $' . number_format($totalRevenue, 2), 0, 1);
+$pdf->Cell(0, 10, 'Total Revenue: Ksh. ' . number_format($totalRevenue, 2), 0, 1);
 $pdf->Cell(0, 10, 'Total Orders: ' . $totalOrders, 0, 1);
 
 // Output PDF to browser
