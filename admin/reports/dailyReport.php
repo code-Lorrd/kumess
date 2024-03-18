@@ -50,7 +50,8 @@ $pdf->SetKeywords('Summary, Report, Daily');
 
 // Add a page
 $pdf->AddPage();
-
+$logoPath = '../../images/logo.png'; // Replace with your logo path
+$pdf->Image($logoPath, 10, 10, 20, 0, '', '', 'T', false, 300, '', false, false, 0, false, false, false);
 // Set font
 $pdf->SetFont('helvetica', 'B', 16);
 
