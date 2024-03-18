@@ -13,7 +13,7 @@
 		<br><br>
 
 		
-
+		<a href="reports/foodReports.php" style="cursor:pointer;" rel="noopener noreferrer" target="blank">
 		<div class="col-4 text-center">
 			<?php 
 			$sql2 = "SELECT * FROM food_items";
@@ -26,9 +26,12 @@
 
 			?>
 			<h1><?php echo $count2;?></h1><br>
-			Food
+			Foods on menu
 		</div>
+		</a>
 
+		 
+		<a href="reports/orderReports.php" style="cursor:pointer;" rel="noopener noreferrer" target="blank">
 		<div class="col-4 text-center">
 			<?php 
 
@@ -52,29 +55,20 @@
 			// Close the prepared statement
 			$stmt->close();
 
-
-			// $dateTime = new DateTime();
-
-			// $currentDate = $dateTime->format('Y-m-d H:i:s');
-			// $sql3 = "SELECT * FROM tbl_orders WHERE orderdate = '$currentDate';";
-			// echo $sql3;
-			// //execute
-			// $res3 = mysqli_query($conn, $sql3);
-
-			// //count rows
-			// $count3 = mysqli_num_rows($res3);
-
 			?>
 			<h1><?php echo $count3;?></h1><br>
 			Total orders
 		</div>
+		</a>
 
+		<a href="reports/salesReports.php" style="cursor:pointer;" rel="noopener noreferrer" target="blank">
 		<div class="col-4 text-center">
 			<?php
 
 			//create sql
 			//aggregate function
-			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ready'";
+			//$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ready'";
+			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ordered'";
 
 			//EXECUTE
 			$res4 = mysqli_query($conn, $sql4);
@@ -87,8 +81,66 @@
 
 			?>
 			<h1>Ksh.<?php echo $total_rev;?></h1><br>
-			Earnings
+			Total Earnings
 		</div>
+		</a>
+
+		<a href="reports/forecastReport.php" style="cursor:pointer;" rel="noopener noreferrer" target="blank">
+		<div class="col-4 text-center">
+			<?php
+
+			//create sql
+			//aggregate function
+			//$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ready'";
+			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ordered'";
+
+			//EXECUTE
+			$res4 = mysqli_query($conn, $sql4);
+
+			//get value
+			$row4 = mysqli_fetch_assoc($res4);
+
+			//get total rev
+			$total_rev = $row4['Total'];
+
+			?>
+			<h1>Ksh.<?php echo $total_rev+1000;?></h1><br>
+			Projected Earnings
+		</div>
+		</a>
+
+		<a href="reports/dailyReport.php" rel="noopener noreferrer" target="blank" style="cursor:pointer;">
+		<div class="col-4 text-center">
+			<?php
+
+			//create sql
+			//aggregate function
+
+			$now = new DateTime();
+
+            // Format the timestamp as a string in the desired format
+			$startDate = "2023-03-18 18:56:59";
+			$endDate = $now->format('Y-m-d H:i:s');
+			//echo $endDate;
+
+
+			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE orderdate BETWEEN '$startDate' AND '$endDate'";
+			//$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ordered'";
+
+			//EXECUTE
+			$res4 = mysqli_query($conn, $sql4);
+
+			//get value
+			$row4 = mysqli_fetch_assoc($res4);
+
+			//get total rev
+			$total_rev = $row4['Total'];
+
+			?>
+			<h1>Ksh.<?php echo $total_rev;?></h1><br>
+			Daily Earnings
+		</div>
+		</a>
 
 		<div class="clearfix"></div>
 	    </div>

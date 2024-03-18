@@ -20,6 +20,7 @@ include 'login_check.php';
 			<li><a href="manageadmin.php">Admin</a></li>
 			<li><a href="managefood.php">Food</a></li>
 			<li><a href="manageorder.php">Order</a></li>
+			<li><a href="reports.php">Reports</a></li>
 			<li><?php echo $_SESSION['user'];?></li>
 			<li><a href="logout.php">Log out</a></li>
 		</ul>

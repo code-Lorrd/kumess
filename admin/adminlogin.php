@@ -29,8 +29,9 @@ if (isset($_POST['submit'])) {
 	// processs login
 	//get data from form
 
-  $username = $_POST['username'];
+    $username = $_POST['username'];
 	$password = $_POST['password']; 
+	$password = md5($password);
 
 	//sql to check whether usernam and pass exist
 	$sql = "SELECT * FROM tbl_admin WHERE username='$username' AND password='$password' LIMIT 1";
