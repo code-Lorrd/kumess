@@ -55,8 +55,25 @@ if ($res2 && mysqli_num_rows($res2) > 0) {
     echo '<tbody>';
 
     while ($row = mysqli_fetch_assoc($res2)) {
+        // Query to search for the food name using the food_id
+        $foodId = $row['food_id'];
+        $sql = "SELECT title FROM food_items WHERE id = '$foodId'";
+
+        // Prepare the statement
+        $stmt = $conn->prepare($sql);
+        // Execute the statement
+        $stmt->execute();
+
+        // Bind result variables
+        $stmt->bind_result($foodname);
+
+        // Fetch the result
+        $stmt->fetch();
+
+        // Close statement
+        $stmt->close();
         echo '<tr>';
-        echo '<td>' . $row['food_id'] . '</td>';
+        echo '<td>' . $foodname . '</td>';
         echo '<td>' . $row['orderdate'] . '</td>';
         echo '<td>' . $row['status'] . '</td>';
         echo '<td>' . $row['quantity'] . '</td>';

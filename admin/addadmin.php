@@ -50,6 +50,7 @@ if (isset($_POST['submit'])) {
 	//get data from form
 	$username=$_POST['username'];
 	$password=$_POST['password']; //password encrypt
+	$password = md5($password);
 
 	//SQL to save data to database
 
