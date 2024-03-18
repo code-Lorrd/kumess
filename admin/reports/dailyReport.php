@@ -11,10 +11,12 @@ if ($conn->connect_error) {
 }
 
 // Determine the time period for the report (e.g., for a specific date)
-$date = '2024-03-18';
+$now = new DateTime();
+$date = $now->format('Y-m-d H:i:s');
+
 
 // Query to fetch orders data for the specified date
-$sql = "SELECT * FROM orders WHERE DATE(orderdate) = ?";
+$sql = "SELECT * FROM tbl_orders WHERE YEAR(orderdate) = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $date);
 $stmt->execute();
