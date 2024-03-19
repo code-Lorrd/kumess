@@ -67,8 +67,8 @@
 
 			//create sql
 			//aggregate function
-			//$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ready'";
-			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ordered'";
+			$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ready'";
+			//$sql4 = "SELECT SUM(total) AS Total FROM tbl_orders WHERE status='ordered'";
 
 			//EXECUTE
 			$res4 = mysqli_query($conn, $sql4);
