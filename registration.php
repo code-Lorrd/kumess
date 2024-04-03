@@ -1,8 +1,12 @@
+<?php require('conn/conn.php'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <title>Registration Page</title>
 <link rel="stylesheet" href="css/registration.css">
+</head>
+<body>
 <script>
   const username = document.getElementById('username');
   const usernameError = document.getElementById('username-error');
@@ -73,11 +77,9 @@
     span.style.fontWeight = 'bold';
   });
 </script>
-</head>
-<body>
 <h2>Register</h2>
 <?php
-if(isset($_SESSION)){
+if(isset($_SESSION['add'])){
  echo $_SESSION['add']; 
 unset( $_SESSION['add'] );} ?>
 
@@ -96,6 +98,7 @@ unset( $_SESSION['add'] );} ?>
   <label for="confirm_password">Confirm Password:</label><br>
   <input type="password" name="confirm_password" id="confirm_password" required><br><br>
   <input type="submit" name="submit" value="Register">
+  <a href="<?php echo SITEURL;?>login.php" class="btn-secondary">Login</a>
 </form>
 </body>
 
@@ -105,7 +108,6 @@ unset( $_SESSION['add'] );} ?>
 
 
 <?php
-require('conn/conn.php');
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];

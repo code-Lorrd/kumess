@@ -15,6 +15,21 @@
 <link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
+<script>
+	const passwordInput = document.getElementById('password');
+	const eyeIcon = document.getElementById('eye');
+
+	eyeIcon.addEventListener('click', () => {
+	if (passwordInput.type === 'password') {
+		passwordInput.type = 'text';
+		eyeIcon.classList.add('active'); // Add active class for styling (optional)
+	} else {
+		passwordInput.type = 'password';
+		eyeIcon.classList.remove('active'); // Remove active class for styling (optional)
+	}
+	});
+
+</script>
 <div class="login">
 <img src="images/logo.png" alt="KU Logo" class="img-responsive" style="width:80px; height:80px; padding-top:30px;">
 <h2 style="margin-top:0px;">Login</h2>
@@ -22,7 +37,10 @@
   <label for="Username">Username</label><br>
   <input type="text" name="username" id="username" required><br><br>
   <label for="password">Password</label><br>
-  <input type="password" name="password" id="password" required><br><br>
+  <div class="password-container">
+    <input type="password" name="password" id="password" required>
+    <i id="eye" class="fas fa-eye"></i> 
+  </div><br><br>
   <input type="submit" name="submit" value="Login">
   <a href="<?php echo SITEURL;?>registration.php" class="btn-secondary">Register</a>
 </form>
