@@ -19,6 +19,7 @@
     <!-- footer Section Starts Here -->
     <section class="footer">
         <div class="container text-center">
+            <p>All rights reserved. Designed By <a href="https://github.com/MutonyiLewis">L.Mutonyi</a></p>
             <p>All rights reserved. Designed By <a href="https://github.com/code-Lorrd">Kabaya</a></p>
         </div>
     </section>

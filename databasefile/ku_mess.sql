@@ -39,15 +39,7 @@ CREATE TABLE `food_items` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `food_items`
---
 
-INSERT INTO `food_items` (`id`, `title`, `description`, `price`, `image_path`, `featured`, `active`, `created_at`, `updated_at`) VALUES
-(3, 'ugali', 'maize flour ', '30.00', 'food_name_6111.png', 'yes', 'yes', '2024-02-02 11:32:09', '2024-02-02 11:32:09'),
-(4, 'Rice', 'Rice pilau', '110.00', 'food_name_7717.png', 'yes', 'yes', '2024-02-02 13:36:20', '2024-02-02 13:36:20');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `menu`
@@ -60,14 +52,6 @@ CREATE TABLE `menu` (
   `image_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `menu`
---
-
-INSERT INTO `menu` (`food_id`, `name`, `price`, `image_path`) VALUES
-(1, 'Chicken', '200.00', 'imagesScreenshot (112).png');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_admin`
@@ -122,17 +106,6 @@ CREATE TABLE `users` (
   `phonenumber` int(11) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `username`, `firstname`, `email`, `phonenumber`, `password`) VALUES
-(13, 'MutonyiLewis', '', '', 0, 'qwerty'),
-(14, 'Sitati', '', '', 0, 'd8578edf8458ce06fbc5bb76a58c5ca4'),
-(15, 'Lewiiii', 'Lewis ', 'mutonyilewis@gmail.com', 778368257, 'd8578edf8458ce06fbc5bb76a58c5ca4'),
-(16, 'Deonte61', 'Enos', 'your.email+fakedata11959@gmail.com', 193, '6dcf51a7679e3265bc5e561b1f63e99a'),
-(17, 'Julia_Jacobs65', 'Amber', 'your.email+fakedata39431@gmail.com', 78787878, '23bd5a2173bf5e2c0abd9235b37abb48');
 
 --
 -- Indexes for dumped tables
